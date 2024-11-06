@@ -5,7 +5,7 @@ const menu_flex = document.getElementById("menu-flex");
 let cart_items = 0
 cart_menu.textContent = 0;
 
-function create_item(id,menu_id) {
+function program_item(id,menu_id) {
   const cart = document.querySelector(`section[id = "${id}"] button`);
   const counter = document.querySelector(`section[id = "${id}"] div`);
   const quantity = document.querySelector(`section[id = "${id}"] div p`);
@@ -60,6 +60,7 @@ function create_item(id,menu_id) {
     cart_menu.textContent = Number(cart_menu.textContent) - Number(quantity_2.textContent)
     menu_item.remove()
     cart_items -= 1
+    console.log(cart_items)
     if (cart_items == 0) {
       empty.style.visibility = 'visible'
     }
@@ -72,18 +73,30 @@ const menu_item = document.getElementById('menu-item')
 sec.remove()
 menu_item.remove()
 
-const sec_copy = sec.cloneNode(true)
-const menu_item_copy = menu_item.cloneNode(true)
-sec_copy.id = "section2",menu_item_copy.id = 'menu1'
-main.append(sec_copy)
-menu_flex.append(menu_item_copy)
-create_item("section2",'menu1');
+function create_item(sec_id,menu_id,img,cat) {
+    const sec_copy = sec.cloneNode(true);
+    console.log(sec_copy);
+    sec_copy.childNodes[1].src = img
+    const menu_item_copy = menu_item.cloneNode(true);
+    (sec_copy.id = sec_id), (menu_item_copy.id = menu_id);
+    main.append(sec_copy);
+    menu_flex.append(menu_item_copy);
+    program_item(sec_copy.id,menu_item_copy.id);
+}
+
+for (let i=0;i<1;i++) {
+    create_item(
+      `section${i}`,
+      `menu${i}`,
+      "/product-list/assets/images/image-brownie-desktop.jpg",
+      "waffles"
+    );
+}
+
+let food_items = {
+    
+}
 
 
-const sec_copy_2 = sec.cloneNode(true);
-const menu_item_copy_2 = menu_item.cloneNode(true);
-sec_copy_2.id = "section3",menu_item_copy_2.id = "menu2";
-main.append(sec_copy_2);
-menu_flex.append(menu_item_copy_2);
-create_item("section3", "menu2");
+
 
