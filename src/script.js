@@ -2,7 +2,8 @@ const cart_menu = document.getElementById("cart-menu");
 const empty = document.getElementById("empty");
 const menu = document.getElementById("menu");
 const menu_flex = document.getElementById("menu-flex");
-
+let cart_items = 0
+cart_menu.textContent = 0;
 
 function create_item(id,menu_id) {
   const cart = document.querySelector(`section[id = "${id}"] button`);
@@ -32,9 +33,10 @@ function create_item(id,menu_id) {
     counter.style.zIndex = "10";
     quantity.textContent = 1;
     quantity_2.textContent = 1;
-    cart_menu.textContent = 1;
+    cart_menu.textContent = Number(cart_menu.textContent) + 1
     empty.style.visibility = "hidden";
     menu_flex.appendChild(menu_item);
+    cart_items += 1
   });
   increase.addEventListener("click", () => {
     quantity.textContent = Number(quantity.textContent) + 1;
@@ -55,7 +57,12 @@ function create_item(id,menu_id) {
     quantity.textContent = 0
     cart.style.zIndex = "10";
     counter.style.zIndex = "0";
+    cart_menu.textContent = Number(cart_menu.textContent) - Number(quantity_2.textContent)
     menu_item.remove()
+    cart_items -= 1
+    if (cart_items == 0) {
+      empty.style.visibility = 'visible'
+    }
     }
   );
 }
