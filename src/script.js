@@ -52,13 +52,12 @@ function create_item(id,menu_id) {
     }
   });
   cancel_item.addEventListener("click", () => {
+    quantity.textContent = 0
+    cart.style.zIndex = "10";
+    counter.style.zIndex = "0";
     menu_item.remove()
-    quantity.textContent == 0
-    cart_items -= 1
-    if (cart_items == 0) {
-        clear()
     }
-  });
+  );
 }
 const main = document.getElementById('main')
 const sec = document.getElementById('section1')
