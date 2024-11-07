@@ -84,8 +84,9 @@ function program_item(id,menu_id,name,price) {
     }
   });
   cancel_item.addEventListener("click", () => {
-    console.log("TOTAL PRICE:", total_price_array);
     total_quantity.textContent = Number(total_quantity.textContent) - q4
+    total_price_array[indie_2] = 0
+    console.log("TOTAL PRICE:", total_price_array);
     quantity.textContent = 0
     cart.style.zIndex = "10";
     counter.style.zIndex = "0";
