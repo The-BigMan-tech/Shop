@@ -30,23 +30,23 @@
             </div>
         </section>
     </main>
-    <div id="menu-flex" class="flex flex-col absolute top-24 right-14 z-10">
-        <div id='menu-item' class="border-b-[1.5px] border-[#87635a]">
-            <p class="font-bold mb-1">Pistachio Baklava</p>
-            <div class="flex">
+    <div id="menu-flex" class="flex flex-col absolute top-24 right-20 z-10 h-64 overflow-y-scroll overflow-x-hidden">
+        <div id='menu-item' class="border-b-[1.5px] border-[#87635a] w-72">
+            <p class="font-bold mb-1 relative">Pistachio Baklava</p>
+            <div class="flex w-96">
                 <span class="text-red-500">
                     <span id="quantity-2">0</span><span>x</span>
                 </span>
-                <span class="text-[#a49e9a] ml-5">5.50</span>
-                <span id="quantity-3" class="text-[#6b6765] ml-5">5.50</span>
-                <button id="cancel-item">
-                    <img class="w-5 h-5 border-[1.5px] rounded-full border-[#b7afad] p-1 ml-40" src="/product-list/assets/images/icon-remove-item.svg" alt="">
+                <span class="text-[#a49e9a] px-8">5.50</span>
+                <span id="quantity-3" class="text-[#6b6765] m-0">5.50</span>
+                <button id="cancel-item" class="absolute right-20">
+                    <img class="w-5 h-5 border-[1.5px] rounded-full border-[#b7afad] p-1 relative left-9" src="/product-list/assets/images/icon-remove-item.svg" alt="">
                 </button>
             </div>
         </div>
     </div>
     <div id='menu' class="absolute top-6 right-5 bg-white px-32 py-28 rounded-2xl z-0">
-        <h2 class="flex absolute top-6 left-6 text-red-600 text-2xl font-bold">
+        <h2 class="flex absolute top-6 left-8 text-red-600 text-2xl font-bold">
             <p>Your Cart</p>
             <p>(<span id="cart-menu">0</span>)</p>
         </h2>
