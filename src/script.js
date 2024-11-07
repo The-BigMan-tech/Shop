@@ -27,10 +27,8 @@ function program_item(id,menu_id,name,price) {
     return item * count;
   }
   function clear() {
-    menu_item.remove();
     cart.style.zIndex = "10";
     counter.style.zIndex = "0";
-    empty.style.visibility = "visible";
   }
   cart.addEventListener("click", () => {
     cart.style.zIndex = "0";
@@ -55,7 +53,12 @@ function program_item(id,menu_id,name,price) {
     quantity_3.textContent = "$" + String(item_count(price, quantity_2));
     cart_menu.textContent = Number(cart_menu.textContent) - 1;
     if (Number(quantity.textContent) == 0) {
-      clear();
+      menu_item.remove();
+      cart_items -= 1
+      clear()
+    }
+    if (cart_items == 0) {
+        empty.style.visibility = "visible";
     }
   });
   cancel_item.addEventListener("click", () => {
