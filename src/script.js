@@ -37,6 +37,7 @@ function program_item(id,menu_id,name,price) {
     counter.style.zIndex = "10";
     quantity.textContent = 1;
     quantity_2.textContent = 1;
+    quantity_3.textContent = "$" + String(price)
     cart_menu.textContent = Number(cart_menu.textContent) + 1
     empty.style.visibility = "hidden";
     menu_flex.appendChild(menu_item);
