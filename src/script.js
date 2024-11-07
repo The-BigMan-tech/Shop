@@ -2,7 +2,9 @@ const cart_menu = document.getElementById("cart-menu");
 const empty = document.getElementById("empty");
 const menu = document.getElementById("menu");
 const menu_flex = document.getElementById("menu-flex");
+let total_price_array = []
 let cart_items = 0
+let indie = 0
 cart_menu.textContent = 0;
 
 function program_item(id,menu_id,name,price) {
@@ -21,7 +23,10 @@ function program_item(id,menu_id,name,price) {
   menu_item.childNodes[3].childNodes[5].textContent = price
   menu_item.childNodes[3].childNodes[3].textContent = `@ $ ${price}`
   console.log(menu_item)
-
+  
+  let total_price = 0;
+  indie += 1;
+  let indie_2 = indie;
   function item_count(item, count) {
     count = Number(count.textContent);
     return item * count;
@@ -40,17 +45,26 @@ function program_item(id,menu_id,name,price) {
     empty.style.visibility = "hidden";
     menu_flex.appendChild(menu_item);
     cart_items += 1
+    total_price = price
+    total_price_array[indie_2] = total_price
+    console.log("TOTAL PRICE:",total_price_array)
   });
   increase.addEventListener("click", () => {
     quantity.textContent = Number(quantity.textContent) + 1;
     quantity_2.textContent = Number(quantity_2.textContent) + 1;
-    quantity_3.textContent = "$" + String(item_count(price, quantity_2));
+    quantity_3.textContent = item_count(price,quantity_2)
+    total_price_array[indie_2] = Number(quantity_3.textContent);
+    console.log("TOTAL PRICE:", total_price_array);
+    quantity_3.textContent = "$" + String(quantity_3.textContent);
     cart_menu.textContent = Number(cart_menu.textContent) + 1;
   });
   decrease.addEventListener("click", () => {
     quantity.textContent = Number(quantity.textContent) - 1;
     quantity_2.textContent = Number(quantity_2.textContent) - 1;
-    quantity_3.textContent = "$" + String(item_count(price, quantity_2));
+    quantity_3.textContent = item_count(price, quantity_2);
+    total_price_array[indie_2] = Number(quantity_3.textContent);
+    console.log("TOTAL PRICE:", total_price_array);
+    quantity_3.textContent = "$" + String(quantity_3.textContent);
     cart_menu.textContent = Number(cart_menu.textContent) - 1;
     if (Number(quantity.textContent) == 0) {
       menu_item.remove();
@@ -62,6 +76,8 @@ function program_item(id,menu_id,name,price) {
     }
   });
   cancel_item.addEventListener("click", () => {
+    total_price_array.splice(indie_2,1)
+    console.log("TOTAL PRICE:",total_price_array)
     quantity.textContent = 0
     cart.style.zIndex = "10";
     counter.style.zIndex = "0";
@@ -165,7 +181,6 @@ let food_items = [
   },
 ];
 make_shop(food_items)
-
 
 
 
