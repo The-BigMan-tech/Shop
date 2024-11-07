@@ -770,6 +770,10 @@ video {
   left: 15rem;
 }
 
+.bottom-20 {
+  bottom: 5rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1230,6 +1234,10 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .hover\:text-red-500:hover {

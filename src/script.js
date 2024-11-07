@@ -2,6 +2,7 @@ const cart_menu = document.getElementById("cart-menu");
 const empty = document.getElementById("empty");
 const menu = document.getElementById("menu");
 const menu_flex = document.getElementById("menu-flex");
+const total_quantity = document.getElementById('totalquantity')
 let total_price_array = []
 let cart_items = 0
 let indie = 0
@@ -27,6 +28,7 @@ function program_item(id,menu_id,name,price) {
   let total_price = 0;
   indie += 1;
   let indie_2 = indie;
+  let q4 = 0
   function item_count(item, count) {
     count = Number(count.textContent);
     return item * count;
@@ -40,6 +42,7 @@ function program_item(id,menu_id,name,price) {
     counter.style.zIndex = "10";
     quantity.textContent = 1;
     quantity_2.textContent = 1;
+    q4 = price
     quantity_3.textContent = "$" + String(price)
     cart_menu.textContent = Number(cart_menu.textContent) + 1
     empty.style.visibility = "hidden";
@@ -48,22 +51,27 @@ function program_item(id,menu_id,name,price) {
     total_price = price
     total_price_array[indie_2] = total_price
     console.log("TOTAL PRICE:",total_price_array)
+    total()
   });
   increase.addEventListener("click", () => {
     quantity.textContent = Number(quantity.textContent) + 1;
     quantity_2.textContent = Number(quantity_2.textContent) + 1;
     quantity_3.textContent = item_count(price,quantity_2)
+    q4 = Number(quantity_3.textContent)
     total_price_array[indie_2] = Number(quantity_3.textContent);
     console.log("TOTAL PRICE:", total_price_array);
     quantity_3.textContent = "$" + String(quantity_3.textContent);
     cart_menu.textContent = Number(cart_menu.textContent) + 1;
+    total()
   });
   decrease.addEventListener("click", () => {
     quantity.textContent = Number(quantity.textContent) - 1;
     quantity_2.textContent = Number(quantity_2.textContent) - 1;
     quantity_3.textContent = item_count(price, quantity_2);
+    q4 = Number(quantity_3.textContent)
     total_price_array[indie_2] = Number(quantity_3.textContent);
     console.log("TOTAL PRICE:", total_price_array);
+    total()
     quantity_3.textContent = "$" + String(quantity_3.textContent);
     cart_menu.textContent = Number(cart_menu.textContent) - 1;
     if (Number(quantity.textContent) == 0) {
@@ -76,8 +84,8 @@ function program_item(id,menu_id,name,price) {
     }
   });
   cancel_item.addEventListener("click", () => {
-    total_price_array.splice(indie_2,1)
-    console.log("TOTAL PRICE:",total_price_array)
+    console.log("TOTAL PRICE:", total_price_array);
+    total_quantity.textContent = Number(total_quantity.textContent) - q4
     quantity.textContent = 0
     cart.style.zIndex = "10";
     counter.style.zIndex = "0";
@@ -124,6 +132,14 @@ function make_shop(food) {
       );
   }
 }
+function total() {
+      new_price_array = total_price_array.filter((e)=>typeof e ==='number')
+      if (new_price_array.length > 0) {
+          total_quantity.textContent = new_price_array.reduce((accumulator, value) => accumulator + value);
+      }
+      console.log("REAL TOTAL",total_quantity.textContent)
+}
+
 let food_items = [
   {
     image: "image-waffle-desktop.jpg",
