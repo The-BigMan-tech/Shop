@@ -3,10 +3,12 @@ const empty = document.getElementById("empty");
 const menu = document.getElementById("menu");
 const menu_flex = document.getElementById("menu-flex");
 const total_quantity = document.getElementById('totalquantity')
+const final_total = document.getElementById('finaltotal')
 let total_price_array = []
 let cart_items = 0
 let indie = 0
 cart_menu.textContent = 0;
+final_total.style.visibility = 'hidden'
 
 function program_item(id,menu_id,name,price) {
   const cart = document.querySelector(`section[id = "${id}"] button`);
@@ -46,6 +48,7 @@ function program_item(id,menu_id,name,price) {
     quantity_3.textContent = "$" + String(price)
     cart_menu.textContent = Number(cart_menu.textContent) + 1
     empty.style.visibility = "hidden";
+    final_total.style.visibility = "visible"
     menu_flex.appendChild(menu_item);
     cart_items += 1
     total_price = price
@@ -81,6 +84,7 @@ function program_item(id,menu_id,name,price) {
     }
     if (cart_items == 0) {
         empty.style.visibility = "visible";
+        final_total.style.visibility = "hidden"
     }
   });
   cancel_item.addEventListener("click", () => {
@@ -96,6 +100,7 @@ function program_item(id,menu_id,name,price) {
     console.log(cart_items)
     if (cart_items == 0) {
       empty.style.visibility = 'visible'
+      final_total.style.visibility = "hidden"
     }
     }
   );

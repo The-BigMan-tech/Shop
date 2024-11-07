@@ -774,6 +774,14 @@ video {
   bottom: 5rem;
 }
 
+.right-8 {
+  right: 2rem;
+}
+
+.left-40 {
+  left: 10rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1023,6 +1031,10 @@ video {
   gap: 14rem;
 }
 
+.gap-16 {
+  gap: 4rem;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1234,6 +1246,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
 }
 
 .filter {
